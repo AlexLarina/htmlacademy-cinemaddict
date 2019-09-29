@@ -90,10 +90,65 @@
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-console.log(`it all works`);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _templates_filters__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./templates/filters */ "./src/templates/filters.js");
+/* harmony import */ var _mocks_filters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mocks/filters */ "./src/mocks/filters.js");
+
+
+const filters = Object(_mocks_filters__WEBPACK_IMPORTED_MODULE_1__["createFilters"])();
+const filterContainerElement = document.querySelector(`.main-navigation`);
+filterContainerElement.innerHTML = Object(_templates_filters__WEBPACK_IMPORTED_MODULE_0__["createFiltersTemplate"])(filters);
+
+/***/ }),
+
+/***/ "./src/mocks/filters.js":
+/*!******************************!*\
+  !*** ./src/mocks/filters.js ***!
+  \******************************/
+/*! exports provided: createFilters */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFilters", function() { return createFilters; });
+const FILTER_NAMES = [`watchlist`, `history`, `favorites`];
+const FILMS_AMOUNT = {
+  MIN: 0,
+  MAX: 100
+};
+
+const getRandomFromRange = (min, max) => Math.round(Math.random() * (max - min) + min);
+
+const createFilters = () => FILTER_NAMES.map(name => {
+  return {
+    name: name,
+    count: getRandomFromRange(FILMS_AMOUNT.MIN, FILMS_AMOUNT.MAX)
+  };
+});
+
+/***/ }),
+
+/***/ "./src/templates/filters.js":
+/*!**********************************!*\
+  !*** ./src/templates/filters.js ***!
+  \**********************************/
+/*! exports provided: createFiltersTemplate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFiltersTemplate", function() { return createFiltersTemplate; });
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+const createFiltersTemplate = filters => `<a href="#all" class="main-navigation__item main-navigation__item--active">All movies</a>
+    ${filters.map(filter => `<a href="#${filter.name}" class="main-navigation__item">${capitalize(filter.name)} 
+                <span class="main-navigation__item-count">${filter.count}</span>
+            </a>`).join(``)}
+    <a href="#stats" class="main-navigation__item main-navigation__item--additional">Stats</a>`;
 
 /***/ })
 
