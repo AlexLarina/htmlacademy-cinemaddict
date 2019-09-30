@@ -13,7 +13,7 @@
 // };
 
 const createFilmCardTemplate = (film) => (
-    `<article class="film-card">
+  `<article class="film-card">
         <h3 class="film-card__title">${film.title}</h3>
         <p class="film-card__rating">${film.rating}</p>
         <p class="film-card__info">
@@ -34,5 +34,5 @@ const createFilmCardTemplate = (film) => (
 );
 
 export const createFilmsTemplate = (films) => (
-    films.map((film) => createFilmCardTemplate(film)).join(``)
+  films.map((film) => createFilmCardTemplate(film)).join(``)
 );
