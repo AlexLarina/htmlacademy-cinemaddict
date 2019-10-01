@@ -3,4 +3,7 @@ env:
   browser: true
   commonjs: true
 
+parserOptions:
+  sourceType: module
+
 extends: 'htmlacademy/es6'
