@@ -1,7 +1,6 @@
-const POSTERS = [`three-friends`, `moonrise`, `fuga-da-new-york`, `blue-blazes`, `accused`, `blackmail`];
+import {getRandomArrayItem} from '../lib/utils';
 
-const createRandomFromRange = (min, max) => Math.ceil(Math.random() * (max - min) + min);
-const getRandomArrayItem = (array) => array[createRandomFromRange(0, array.length - 1)];
+const POSTERS = [`three-friends`, `moonrise`, `fuga-da-new-york`, `blue-blazes`, `accused`, `blackmail`];
 
 const createCard = (posters) => {
   return {
